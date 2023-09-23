@@ -1,0 +1,173 @@
+{% load static %}
+<style>
+  body {
+      background-color: rgb(156, 197, 241);
+      margin: 0;
+      padding: 0;
+     
+    }
+    
+    header {
+      background-color: #f8f8f8;
+      padding: 30px;
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    
+    li {
+      margin-right: 40px;
+    }
+    
+    a {
+      text-decoration: none;
+      color: #333;
+    }
+    
+    .right-side {
+      margin-left: auto;
+    }
+    
+    .fa {
+      font-size: 18px;
+      margin-right: 10px;
+    }
+
+    /* Login Page */
+    
+      .login-box {
+          width: 434px;
+          padding: 28px;
+          margin: 133px 510px;
+          background-color: #ffffff;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          
+      }
+      
+      h2 {
+          margin-top: 0;
+      }
+      
+      .input-group {
+          margin-bottom: 15px;
+      }
+      
+      label {
+          display: block;
+          margin-bottom: 5px;
+          text-align: left;
+      }
+      .input-group input {
+          width: 100%;
+          padding: 8px;
+          border: none;
+          border-bottom: 1px solid #ccc;
+          background-color: transparent;
+          outline: none;
+        }
+      input {
+          width: 100%;
+          padding: 8px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+      }
+      
+      .forgot-password {
+          margin-bottom: 15px;
+      }
+      
+      .button-group {
+          display: flex;
+          
+      }
+      
+      .register-btn{
+          background-color: rgb(178, 174, 174) ; ;
+          padding: 10px ;
+          width: 220px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+      }
+      
+      .signin-btn {
+          padding: 10px 20px;
+          background-color: blue;
+          color: #fff;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          width: 220px;
+      }
+      
+      .register-btn:hover,
+      .signin-btn:hover {
+          background-color: #f0f0f0;
+      } 
+    
+</style>
+<body>
+<header>
+  <nav>
+    <div class="left-side">
+      
+      <ul>
+          <a href="#" class="logo"><img src="{% static 'logo.jpg' %}"  height="30px" width="30px" alt="Medikiosk"></a> 
+          &nbsp; 
+        
+      </ul>
+    </div>
+    <div class="right-side">
+      <ul>
+        <li>
+          
+            <input type="text" placeholder="Search for products, brands and more" />
+          
+        </li>
+        <li><a href="#"><i class="fa fa-shopping-bag">Wishlist</i></a></li>
+        <li><a href="#"><i class="fa fa-heart"></i>Bag</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<div class="login-box">
+  <h2><p><centre>LOGIN</centre> </p>{{ user.username }}</h2>
+  <form>
+    <div class="input-group">
+      <label for="email"></label>
+      <input type="email" id="email" placeholder="Email">
+    </div>
+    <div class="input-group">
+      <label for="password"></label>
+      <input type="password" id="password" placeholder="Password">
+    </div>
+    <div class="forgot-password">
+      <a href="#">Forgot password?</a>
+    </div>
+    <div class="button-group">
+      {% if user.is_authenticated %}
+          <div class="alert alert-success" role="alert">
+              <a href="{% url 'logout' %}">Logout?</a>
+          </div>
+      {% else %}
+          <div class="alert alert-success" role="alert">
+            </div>
+              <a class ="register-btn" href="{% url 'register' %}">Signup</a>
+              <a class="signin-btn" href="{% url 'login' %}">Login</a>
+          </div>
+      {% endif %}
+    </div>
+  </form>
+</div>
+</body>
